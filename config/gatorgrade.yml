@@ -1,0 +1,80 @@
+# --> check the Python program
+- source/perform-ordered-pair-swap.py:
+  - description: Ensure that the perform-ordered-pair-swap.py file exists in the source directory
+    check: ConfirmFileExists
+  - description: Complete all TODOs, remove the TODO markers in the perform-ordered-pair-swap.py
+    check: MatchFileFragment
+    options:
+      fragment: TODO
+      count: 0
+      exact: true
+  - description: Create a sufficient number of docstring (i.e., multiple-line) comments in the main.py
+    check: CountMultipleLineComments
+    options:
+      language: "Python"
+      count: 1
+      exact: false
+  - description: Create a sufficient number of single-line comments in the main.py
+    check: CountSingleLineComments
+    options:
+      language: "Python"
+      count: 6
+      exact: false
+
+# --> check the technical writing for various characteristics
+- writing/reflection.md:
+  - description: Ensure that reflection.md file exists in the writing/ directory
+    check: ConfirmFileExists
+  - description: Write a minimum number of meaningful words in the reflection
+    check: CountFileWords
+    options:
+      count: 125
+      exact: false
+  # - description: Confirm that the markdown file has the correct number of headers
+  #   check: CountMarkdownTags
+  #   options:
+  #     tag: heading
+  #     count: 7
+  #     exact: false
+  # - description: Confirm that the markdown file has the correct number of fenced code blocks
+  #   check: CountMarkdownTags
+  #   options:
+  #     tag: code_block
+  #     count: 2
+  #     exact: false
+  - description: Complete all TODOs, remove the TODO markers in the reflection.md
+    check: MatchFileFragment
+    options:
+      fragment: TODO
+      count: 0
+      exact: true
+  - description: Delete the 'Add Your Name Here' prompt in the reflection file
+    check: MatchFileFragment
+    options:
+      fragment: "Add Your Name Here"
+      count: 0
+      exact: true
+
+# --> check that the number of commits in the Git repository is beyond a threshold
+# count number of commits in the GitHub repository
+- description: Have at least a specific minimum number of commits (5) in repository
+  check: CountCommits
+  options:
+    count: 5
+
+# run the program and confirm correct number of lines in the output
+#- description: Run the program and confirm the correct number of lines in the output
+#  check: CountCommandOutput
+#  options:
+#    command: 'cd source; python perform-ordered-pair-swap.py'
+#    count: 3
+#    exact: true
+
+# run the program and confirm the existence of fragments in its output
+#- description: 'Run the program and confirm the existence of content in its output: Swapped (again) tuple of ordered pairs'
+#  check: MatchCommandFragment
+#  options:
+#    command: 'cd source; python perform-ordered-pair-swap.py'
+#    fragment: Swapped (again) tuple of ordered pairs
+#    count: 1
+#    exact: true
